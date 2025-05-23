@@ -51,12 +51,12 @@ watch(searchText, (newText) => {
     </button>
     <ul
       v-if="searchResults.length > 0"
-      class="overflow-auto max-h-96 border bg-white rounded-lg shadow-md mt-1.5"
+      class="overflow-auto max-h-96 border bg-gray-200 rounded-lg shadow-md mt-1.5"
     >
       <li
         v-for="result in searchResults"
         :key="result"
-        class="aum text-pretty py-2 px-4 rounded-lg hover:bg-gray-100 hover:font-medium"
+        class="aum text-pretty py-2 px-4 rounded-lg hover:bg-gray-300 hover:font-medium"
       >
         {{ result }}
       </li>
