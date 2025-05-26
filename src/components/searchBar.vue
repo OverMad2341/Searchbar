@@ -3,6 +3,8 @@ import { ref, watch } from "vue";
 
 const searchText = ref("");
 const isFocused = ref(false);
+
+//* array, donde busca los resultados
 const allItems = ref(["Manzana", "Banana", "Naranja", "Fresa", "Mango",
     "Uva", "Piña", "Sandía", "Melón", "Pera",
     "Kiwi", "Frambuesa", "Arándano", "Mora", "Cereza",
@@ -13,8 +15,11 @@ const allItems = ref(["Manzana", "Banana", "Naranja", "Fresa", "Mango",
     "Carambola", "Pitahaya", "Feijoa", "Mangostán", "Rambután",
     "Chirimoya", "Zapote", "Jaca", "Durazno", "Nectarina",
     "Pomelo", "Mandarina", "Toronja", "Plátano", "Higo chumbo"]);
+
+
 const searchResults = ref([]);
 
+//* Observa si sucedio algun cambio en el input
 watch(searchText, (newText) => {
   if (newText) {
     searchResults.value = allItems.value.filter((item) =>
@@ -27,9 +32,11 @@ watch(searchText, (newText) => {
 </script>
 
 <template>
-  <div class="m-10 w-lg py-2 px-3 select-none relative">
-    <!-- Borde animado -->
+  
+  <!-- * Contenedor -->
+  <div class="w-lg relative ml-96 mt-10 select-none">
 
+    <!-- * input -->
     <input
     type="text"
       name="search"
@@ -39,8 +46,12 @@ watch(searchText, (newText) => {
       class="relative shadow shadow-gray-500 appearance-none border bg-gray-200 rounded-3xl w-full py-2 px-10 text-gray-800 leading-tight focus:outline-blue-500 transition-all duration-500"
       placeholder="Buscar..."
     />
+
+    <!-- * img lupa -->
     <svg class="absolute translate-x-3 -translate-y-7.5 fill-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
     </path></svg>
+
+    <!-- * Borrador (X) -->
     <button
       v-if="searchText"
       type="button"
@@ -49,6 +60,8 @@ watch(searchText, (newText) => {
     >
       <svg class="rounded-4xl bg-gray-300" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
     </button>
+
+    <!-- * Resultado en lista -->
     <ul
       v-if="searchResults.length > 0"
       class="overflow-auto max-h-96 border bg-gray-200 rounded-lg shadow-md mt-1.5"
@@ -56,17 +69,20 @@ watch(searchText, (newText) => {
       <li
         v-for="result in searchResults"
         :key="result"
-        class="aum text-pretty py-2 px-4 rounded-lg hover:bg-gray-300 hover:font-medium"
+        class="aum text-pretty py-2 px-4 rounded-lg hover:bg-gray-300 hover:font-medium transition-all duration-300"
       >
         {{ result }}
       </li>
     </ul>
+
+    <!-- * no encontro ningun resultado -->
     <p
       v-else-if="searchText && searchResults.length === 0"
       class="text-gray-500 mt-2"
     >
       No se encontraron resultados para "{{ searchText }}".
     </p>
+
   </div>
 </template>
 
