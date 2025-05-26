@@ -32,9 +32,10 @@ watch(searchText, (newText) => {
 </script>
 
 <template>
+
   
-  <!-- * Contenedor -->
-  <div class="w-lg relative ml-96 mt-10 select-none">
+  <!-- * Contenedor input -->
+  <div class="w-lg relative m-auto mt-10 select-none">
 
     <!-- * input -->
     <input
@@ -58,13 +59,24 @@ watch(searchText, (newText) => {
       class="absolute -translate-x-10 translate-y-1.5 focus:outline-none"
       @click="searchText = ''"
     >
-      <svg class="rounded-4xl bg-gray-300" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+      <svg class="rounded-4xl bg-gray-300" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z">
+      </path></svg>
     </button>
+    
+    
+  </div>
 
+  <!-- * Notificaciones -->
+  <div class="absolute">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z">
+    </path></svg>
+  </div>
+
+  <div class="relative w-lg m-auto mt-2 select-none">
     <!-- * Resultado en lista -->
     <ul
       v-if="searchResults.length > 0"
-      class="overflow-auto max-h-96 border bg-gray-200 rounded-lg shadow-md mt-1.5"
+      class="overflow-auto absolute z-50 max-h-96 border bg-gray-200 rounded-lg shadow-md mt-1.5 w-full"
     >
       <li
         v-for="result in searchResults"
@@ -78,11 +90,10 @@ watch(searchText, (newText) => {
     <!-- * no encontro ningun resultado -->
     <p
       v-else-if="searchText && searchResults.length === 0"
-      class="text-gray-500 mt-2"
+      class="absolute z-50 text-gray-600 mt-2 w-full rounded-lg bg-gray-100 text-center"
     >
       No se encontraron resultados para "{{ searchText }}".
     </p>
-
   </div>
 </template>
 
