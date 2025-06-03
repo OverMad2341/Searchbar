@@ -4,6 +4,8 @@ import busqueda from './components/searchBar.vue'
 </script>
   
 <template>
-  <busqueda/>
+  <div class="h-15">
+    <busqueda />
+  </div>
 </template>
 

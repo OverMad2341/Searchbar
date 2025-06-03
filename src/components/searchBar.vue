@@ -35,7 +35,7 @@ watch(searchText, (newText) => {
 
   
   <!-- * Contenedor input -->
-  <div class="w-lg relative m-auto mt-10 select-none">
+  <div class="w-sm lg:w-lg relative m-auto select-none">
 
     <!-- * input -->
     <input
@@ -44,7 +44,7 @@ watch(searchText, (newText) => {
       v-model="searchText"
       @focus="isFocused = true"
       @blur="isFocused = false"
-      class="relative shadow shadow-gray-500 appearance-none border bg-gray-200 rounded-3xl w-full py-2 px-10 text-gray-800 leading-tight focus:outline-blue-500 transition-all duration-500"
+      class="relative shadow mt-2.5 shadow-gray-500 appearance-none border bg-gray-200 rounded-3xl w-full py-2 px-10 text-gray-800 leading-tight focus:outline-blue-500 transition-all duration-500"
       placeholder="Buscar..."
     />
 
@@ -64,12 +64,6 @@ watch(searchText, (newText) => {
     </button>
     
     
-  </div>
-
-  <!-- * Notificaciones -->
-  <div class="absolute">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z">
-    </path></svg>
   </div>
 
   <div class="relative w-lg m-auto mt-2 select-none">
